@@ -8,11 +8,15 @@ module.exports = ()=>{
 		try {
 			const token = ctx.header.authorization
 			if(token){
+				console.log(token)
 				try {
 				let payload = await verify(token.split(' ')[1],config.jwt.secret)
         		console.log(payload.data)
         		} catch(e) {
-					console.log('token verify fail: ', err)
+					// if ('TokenExpiredError' === err.name) {
+			  //           ctx.throw(401, 'token expired,请及时本地保存数据！');
+			  //       }
+			        ctx.throw(401, 'invalid token');
 				}
 			} 
 			await next()
@@ -24,8 +28,8 @@ module.exports = ()=>{
 		          message: '认证失败'
 		        }
 		    } else {
-		        e.status = 404;
-		        ctx.body = {
+				e.status=404
+				ctx.body = {
 		          success: 0,
 		          message: '404'
 		        }

@@ -7,7 +7,6 @@ class UserController{
 	async login(ctx,next){
 		try {
 			const {body} = ctx.request
-
 			let user = await UserModel.find({username:body.username})
 			if (!user.length) {
 				ctx.status = 400

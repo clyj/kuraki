@@ -1,12 +1,23 @@
 const router = require('koa-router')()
 
-
-
-module.exports = router.get('/', async ( ctx )=>{
+router.get('/', async ( ctx )=>{
 
 	// await ctx.render('index', {})
-	ctx.body={
-		message:'success'
+	ctx.status = 200
+	ctx.body = {
+		success:'ok'
 	}
 
 })
+
+router.post('/', async ( ctx )=>{
+
+	// await ctx.render('index', {})
+	ctx.status = 200
+	ctx.body = {
+		success:'ok'
+	}
+
+})
+
+module.exports = router
