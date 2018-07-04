@@ -11,6 +11,7 @@ let config = {
         user: '',
         pass: '',
     },
+    imagePath:'public/uploads/',
 }
 
 if (fs.existsSync(__dirname + '/private.js')) {

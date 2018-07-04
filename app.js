@@ -61,10 +61,11 @@ app.use(tokenverify())
 
 app.use(jwt({
   secret:config.jwt.secret,
-  passthrough:true
+  // passthrough:true
 }).unless({
   path:[/^\/user/]
 }))
+
 
 // routes
 app.use(router.routes()).use(router.allowedMethods())

@@ -11,7 +11,8 @@ module.exports = ()=>{
 				console.log(token)
 				try {
 				let payload = await verify(token.split(' ')[1],config.jwt.secret)
-        		console.log(payload.data)
+        		// console.log(payload.data)
+        		ctx.request.body.user = payload.data
         		} catch(e) {
 					// if ('TokenExpiredError' === err.name) {
 			  //           ctx.throw(401, 'token expired,请及时本地保存数据！');
